@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <!-- <div class="border border-2 p-3 m-2 rounded-3 shadow h-75"> -->
+            <div class="details mt-5">
+                <div *ngIf="isFetching">Loading.. <span class="spinner-border"></span></div>
+                <div *ngIf="ErrorText">{{ErrorText}}</div>
+                <button class="btn" (click)="refresh()"><span class="text-primary bi bi-arrow-clockwise"></span></button>
+                <div *ngIf="!pageDetails.isEmpty">
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>UserName</th>
+                            <th>EmailId</th>
+                            <th>FullName</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Mobile</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of pageDetails.userDataBindResponse let i=index">
+                            <td>{{user.userName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.fullName}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.city}}</td>
+                            <td>{{user.state}}</td>
+                            <td>{{user.mobile}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="DeleteUserById(user.userId)"
+                                    (click)="refresh()">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <div>Current Page :{{pageDetails.currentPage}}/{{pageDetails.totalPages}}</div>
+                    <div id="totalRecords">Records found :{{pageDetails.noOfRecordsInCurrentPage}}/{{pageDetails.totalNoOfRecords}}</div>
+                </table>
+                <div class="justify-content-between">
+                    <button class="btn btn-success me-1" *ngIf="pageDetails.hasPrevious" (click)="previous()">
+                        <span class="bi bi-chevron-left"></span>
+                    </button>
+                    <!-- <span *ngIf="pageDetails.isFirst">First</span> -->
+                    <button (click)="GetSpecificPage($event)" class="btn btn-primary me-1" [value]="page"
+                        *ngFor="let page of pages">[{{page}}]</button>
+                    <!-- <span *ngIf="pageDetails.isLast">Last</span> -->
+
+                    <button class="btn btn-success" *ngIf="pageDetails.hasNext" (click)="next()">
+                        <span class="bi bi-chevron-right"></span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

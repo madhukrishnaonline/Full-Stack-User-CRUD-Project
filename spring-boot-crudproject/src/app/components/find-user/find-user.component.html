@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="border border-2 p-3 w-100 mt-5 rounded-3 shadow h-75">
+            <h1>Enter UserName</h1>
+            <div *ngIf="isFinding"><span class="spinner-grow"></span></div>
+            <div class="input-group">
+                <input type="text" name="userName" placeholder="User Name" class="form-control" name="userName"
+                    [(ngModel)]="userName">
+                <button type="button" class="input-group-text" (click)="FindUser()">Search <span
+                        class="bi bi-search"></span></button>
+            </div>
+            <span>{{found|uppercase}}</span>
+            <span> {{errStatus}}</span>
+            <table class="table table-hover table-bordered table-striped mt-2 shadow">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Profile</th>
+                        <th>UserName</th>
+                        <th>EmailId</th>
+                        <th>FullName</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Mobile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{objectData.userId}}</td>
+                        <td>
+                            <span *ngIf="fetchingImage" class="text-center spinner-border spinner-border-sm"></span>
+                            <img *ngIf="!fetchingImage" [src]="objectData.profile" alt="img" width="100px" height="100px" style="border-radius: 50%;">
+                        </td>
+                        <td>{{objectData.userName}}</td>
+                        <td>{{objectData.email}}</td>
+                        <td>{{objectData.fullName}}</td>
+                        <td>{{objectData.address}}</td>
+                        <td>{{objectData.city}}</td>
+                        <td>{{objectData.state}}</td>
+                        <td>{{objectData.mobile}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

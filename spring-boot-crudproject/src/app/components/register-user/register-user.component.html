@@ -1,0 +1,266 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center" id="registerContainer">
+        <div class="border border-2 p-3 m-2 rounded-3 shadow h-75">
+            <h1>Register User <span class="bi-person-add"></span></h1>
+            <div *ngIf="isRegistering"><span class="spinner-grow"></span></div>
+            <form [formGroup]="formRegister" (submit)="RegisterUser()">
+                <div class="row">
+                    <div class="col">
+                        <div class="">
+                            <label class="form-label">User Name</label>
+                            <input type="text" name="userName" formControlName="userName" placeholder="user Name"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="userName?.touched && userName?.invalid || ERequired">
+                                UserName
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div>
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" formControlName="password" placeholder="Password"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="password?.touched && password?.invalid || PRequired">
+                                Password Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="row">
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="fullName" formControlName="fullName" placeholder="Full Name"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="fullName?.touched && fullName?.invalid || FRequired">
+                                FullName Required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">Email Id</label>
+                            <input type="text" name="email" formControlName="email" placeholder="Email Id"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="email?.touched && email?.invalid || ERequired">EmailId
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="row">
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">Address</label>
+                            <input type="text" name="address" formControlName="address" placeholder="Address"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="address?.touched && address?.invalid || ERequired">Address
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">City</label>
+                            <input type="text" name="city" formControlName="city" placeholder="city"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="city?.touched && city?.invalid || ERequired">City
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div class="row">
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">State</label>
+                            <input type="text" name="state" formControlName="state" placeholder="state"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="state?.touched && state?.invalid || ERequired">State
+                                Required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div appearance="outline">
+                            <label class="form-label">Mobile</label>
+                            <input type="text" name="mobile" formControlName="mobile" placeholder="Mobile"
+                                class="form-control">
+                            <div class="text-danger" *ngIf="mobile?.touched && mobile?.invalid || MRequired">Mobile
+                                Required</div>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+                <div appearance="outline">
+                    <label class="form-label">Profile</label>
+                    <input type="file" name="profile" formControlName="profile" class="form-control"
+                        placeholder="profile" (change)="onFileSelected($event)">
+                    <div class="text-danger" *ngIf="profile?.touched && profile?.invalid || prRequired">Profile
+                        Required</div>
+                </div>
+                <div id="register" class="mt-2">
+                    <button type="submit" class="me-3" mat-raised-button color="primary">Register</button>
+                    <button type="reset" mat-raised-button color="primary">Reset</button>
+                </div>
+            </form>
+            <div>{{registerMessage}}</div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--  <form [formGroup]="formRegister" (submit)="RegisterUser()">
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>User Name</mat-label>
+                    <input matInput name="userName" formControlName="userName" placeholder="user Name">
+                    <mat-error class="text-danger" *ngIf="userName?.touched && userName?.invalid || ERequired">UserName
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" [type]="hide? 'password':'text'" formControlName="password"
+                        placeholder="Password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error class="text-danger" *ngIf="password?.touched && password?.invalid || PRequired">
+                        Password Required
+                    </mat-error>
+                </mat-form-field>
+                <div></div>
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput name="fullName" formControlName="fullName" placeholder="Full Name">
+                    <mat-error class="text-danger" *ngIf="fullName?.touched && fullName?.invalid || FRequired">
+                        FullName Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>Email Id</mat-label>
+                    <input matInput name="email" formControlName="email" placeholder="Email Id">
+                    <mat-error class="text-danger" *ngIf="email?.touched && email?.invalid || ERequired">EmailId
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <div></div>
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>Address</mat-label>
+                    <input matInput name="address" formControlName="address" placeholder="Address">
+                    <mat-error class="text-danger" *ngIf="address?.touched && address?.invalid || ERequired">Address
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>City</mat-label>
+                    <input matInput name="city" formControlName="city" placeholder="city">
+                    <mat-error class="text-danger" *ngIf="city?.touched && city?.invalid || ERequired">City
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <div></div>
+                <mat-form-field appearance="outline" class="me-3">
+                    <mat-label>State</mat-label>
+                    <input matInput name="state" formControlName="state" placeholder="state">
+                    <mat-error class="text-danger" *ngIf="state?.touched && state?.invalid || ERequired">State
+                        Required
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput name="mobile" formControlName="mobile" placeholder="Mobile">
+                    <mat-error class="text-danger" *ngIf="mobile?.touched && mobile?.invalid || MRequired">Mobile
+                        Required</mat-error>
+                </mat-form-field>
+                <div></div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Profile</mat-label>
+                    <input matInput name="profile" formControlName="profile"
+                        placeholder="profile">
+                    <mat-error class="text-danger" *ngIf="profile?.touched && profile?.invalid || prRequired">Profile
+                        Required</mat-error>
+                </mat-form-field>
+                <div id="register" class="mt-2">
+                    <button type="submit" class="me-3" mat-raised-button color="primary">Register</button>
+                    <button type="reset" mat-raised-button color="primary">Reset</button>
+                </div>
+            </form> -->
+
+<!-- <form [formGroup]="formRegister" (submit)="RegisterUser()">
+                <mat-vertical-stepper>
+                    <mat-step [stepControl]="FirstFormGroup">
+                        <div formGroupName="firstFormGroup">
+                            <ng-template matStepLabel>Step-1</ng-template>
+                            <mat-form-field appearance="outline" class="me-3">
+                                <mat-label>Email Id</mat-label>
+                                <input matInput name="email" formControlName="email" placeholder="Enter Email Id">
+                                <mat-error class="text-danger" *ngIf="email?.touched && email?.invalid || ERequired">EmailId
+                                    Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button type="button" mat-raised-button color="primary" matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
+                    <mat-step [stepControl]="SecondFormGroup">
+                        <div formGroupName="secondFormGroup">
+                            <ng-template matStepLabel>Step-2</ng-template>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input matInput name="password" [type]="hide? 'password':'text'" formControlName="password" placeholder="Enter Password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error class="text-danger" *ngIf="password?.touched && password?.invalid || PRequired">
+                                    Password Required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex">
+                            <button class="me-3" type="button" mat-raised-button color="warn" matStepperPrevious>
+                                <span class="bi bi-arrow-up"></span> Back
+                            </button>
+                            <button type="button" mat-raised-button color="primary" matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
+                    <mat-step [stepControl]="ThirdFormGroup">
+                        <div formGroupName="thirdFormGroup">
+                            <ng-template matStepLabel>Step-3</ng-template>
+                            <mat-form-field appearance="outline" class="me-3">
+                                <mat-label>First Name</mat-label>
+                                <input matInput name="firstName" formControlName="firstName" placeholder="First Name">
+                                <mat-error class="text-danger" *ngIf="firstName?.touched && firstName?.invalid || FRequired">
+                                    FirstName Required
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput name="lastName" formControlName="lastName" placeholder="Last Name">
+                            </mat-form-field>
+                            <div></div>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Mobile</mat-label>
+                                <input matInput name="mobile" formControlName="mobile" placeholder="Mobile">
+                                <mat-error class="text-danger" *ngIf="mobile?.touched && mobile?.invalid || MRequired">Mobile Required</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="d-flex">
+                            <button class="me-3" type="button" mat-raised-button color="warn" matStepperPrevious>
+                                <span class="bi bi-arrow-up"></span> Back
+                            </button>
+                            <div id="register">
+                                <button type="submit" class="me-3" mat-raised-button color="primary">Register</button>
+                                <button type="reset" mat-raised-button color="primary">Reset</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </form> -->

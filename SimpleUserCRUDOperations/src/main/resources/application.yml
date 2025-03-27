@@ -1,0 +1,56 @@
+server:
+  port: 5656
+  max-http-request-header-size: 2MB
+  tomcat:
+    max-http-response-header-size: 16384
+  
+#Database Properties  
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: java17
+    password: oracle
+ #JPA Properties    
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+   #java Mail Properties
+  mail: 
+    host: smtp.gmail.com
+    port: 587
+    username: ${username}
+    password: ${password}
+    properties: 
+      mail: 
+        smtp: 
+          auth: true
+          starttls: 
+            enable: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 20MB
+  main:
+    allow-circular-references: true
+  web:
+    resources:
+      static-locations: file:///M:/SpringBootImages/
+      add-mappings: true
+
+#  messages:
+#    basename: validation.properties
+
+#spring.mail.transport.protocol=smtp
+
+#spring.mail.properties.mail.smtp.starttls.required=true
+
+#spring.mail.properties.mail.smtp.connectiontimeout=5000
+#
+#spring.mail.properties.mail.smtp.timeout=5000
+#
+#spring.mail.properties.mail.smtp.writetimeout=5000

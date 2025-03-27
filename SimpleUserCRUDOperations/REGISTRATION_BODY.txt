@@ -1,0 +1,8 @@
+	 <img src="cid:registrationImage" width="80px" height="80px" style="border-radius:50%">
+	<h3>Dear {UserName},</h3><br>
+	
+	<h3>User Registration Successful</h3><br>
+	
+	Thank you for Joining in our Community.<br><br>
+Thank You!<br>
+Team HR.

@@ -1,0 +1,7 @@
+<center>
+   <h1>Dear {UserName},</h1>
+   <br>
+   You've Successfully Deleted Data..
+   <br>
+   
+</center>

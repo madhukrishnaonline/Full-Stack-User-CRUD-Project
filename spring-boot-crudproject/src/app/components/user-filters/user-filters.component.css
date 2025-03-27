@@ -1,0 +1,9 @@
+a{
+    text-decoration: none;
+}
+.list{
+    border: 1px solid gray;
+    padding: 8px;
+    margin-bottom: 5px;
+    box-shadow: 3px 3px 3px gray;
+}

@@ -1,0 +1,16 @@
+<nav class="navbar" id="filters">
+    <div class="border-2 border-secondary">
+        <div class="nav border p-3 shadow-sm">
+            <h1 class="text-center">Filters</h1>
+            <ul class="list-unstyled text-center">
+                <li class="list"><a routerLink="register/user">Register</a></li>
+                <li class="list"><a routerLink="allUsers">Get ALL Users</a></li>
+                <li class="list"><a routerLink="findUser">FindUser</a></li>
+                <li class="list"><a routerLink="allUsers/sort" [queryParams]="{sort:'asc'}">Ascending Order</a></li>
+                <li class="list"><a routerLink="allusers/sort" [queryParams]="{sort:'desc'}">REVERSE ORDER</a></li>
+                <li class="list"><a routerLink="limited/users">LIMIT USERS</a></li>
+                <li class="list"><a routerLink="allUsers/page" [queryParams]="{page:'pageNo'}">Users in Pagination</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,9 @@
+#loginContainer{
+    margin-top: 100px;
+    margin-left: -200px;
+}
+#errMsg{
+    margin-left: 150px;
+    font-size: 20px;
+    color: red;
+}

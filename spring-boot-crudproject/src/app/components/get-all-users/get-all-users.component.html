@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-center">
+        <div class="border border-2 p-3 m-2 rounded-3 shadow h-75">
+            <div class="details ms-3">
+                <div *ngIf="isFetching">Loading.. <span class="spinner-border"></span></div>
+                <div *ngIf="ErrorText">{{ErrorText}}</div>
+                <button class="btn" (click)="refresh()"><span class="text-primary bi bi-arrow-clockwise"></span>
+                </button>
+                <div>Records Found :: {{getAllUsers.length}}</div>
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Profile</th>
+                            <th>userName</th>
+                            <th>EmailId</th>
+                            <th>FullName</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Mobile</th>
+                            <th>Operations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of getAllUsers let i=index">
+                            <td>{{user.userId}}</td>
+                            <td>
+                                <img [src]="user.profile" alt="img" width="50px" height="50px" style="border-radius: 50%;">
+                            </td>
+                            <td>{{user.userName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.fullName}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.city}}</td>
+                            <td>{{user.state}}</td>
+                            <td>{{user.mobile}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="DeleteUserById(user.userId)"
+                                    (click)="refresh()">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

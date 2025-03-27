@@ -1,0 +1,11 @@
+<div>
+<img src="cid:registrationImage" width="80px" height="80px" style="border-radius:50%">
+ <h3>Dear {USERNAME}</h3><br>
+ </div>
+<br>
+Your Account Logged in {OSNAME} at {DATETIME} On {DAY}
+<br>
+If this not done by you,Secure your Account by changing the password
+<br>
+Thank You<br>
+Team Account
